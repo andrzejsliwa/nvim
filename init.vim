@@ -50,6 +50,7 @@ Plug 'roman/golden-ratio'
 Plug 'fatih/vim-go'
 Plug 'Shougo/vimshell.vim'
 Plug 'benmills/vimux'
+Plug 'wikitopian/hardmode'
 Plug 'troydm/pb.vim'
 Plug 'croaker/mustang-vim'
 Plug 'Shougo/neosnippet' " NeoSnippet {{{
@@ -113,7 +114,8 @@ set notimeout
 " enable status
 set laststatus=2
 " enable relative numbering
-set relativenumber
+"   set relativenumber
+set number
 " configure wrapping
 set wrap
 set formatoptions+=qrn1
