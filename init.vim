@@ -65,8 +65,8 @@ if has('conceal')
 endif
 Plug 'Shougo/neosnippet-snippets'
 " }}}
-Plug 'vim-scripts/ZoomWin' " ZoomWin {{{
-map <leader>z <Plug>ZoomWin
+Plug 'dhruvasagar/vim-zoom' " vim-zoom {{{
+map <leader>z <Plug>(zoom-toggle)
 " }}}
 Plug 'gryf/kickass-syntax-vim'
 Plug 'morhetz/gruvbox'
@@ -75,6 +75,7 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='powerlineish'
+
 " }}} Plugs definitions
 
 call plug#end()
@@ -115,7 +116,6 @@ set notimeout
 set laststatus=2
 " enable relative numbering
 "   set relativenumber
-set number
 " configure wrapping
 set wrap
 set formatoptions+=qrn1
@@ -300,60 +300,46 @@ endif
 
 
 " Bindings {{{
-nmap <space> [fzf]
-nnoremap [fzf] <nop>
+nmap <space> [space]
+nnoremap [space] <nop>
 
-nnoremap <silent> [fzf]f :<C-u>Files<cr>
-nnoremap <silent> [fzf]F :<C-u>GFiles<cr>
-nnoremap <silent> [fzf]l :<C-u>Lines<cr>
-nnoremap <silent> [fzf]L :<C-u>BLines<cr>
-nnoremap <silent> [fzf]b :<C-u>Buffers<cr>
-nnoremap <silent> [fzf]/ :<C-u>Ag<cr>
-nnoremap <silent> [fzf]F :<C-u>GFiles<cr>
+nnoremap <silent> [space]f :<C-u>Files<cr>
+nnoremap <silent> [space]F :<C-u>GFiles<cr>
+nnoremap <silent> [space]l :<C-u>Lines<cr>
+nnoremap <silent> [space]L :<C-u>BLines<cr>
+nnoremap <silent> [space]b :<C-u>Buffers<cr>
+nnoremap <silent> [space]/ :<C-u>Ag<cr>
 
-nnoremap [fzf]ga :Git add %:p<CR><CR>
-nnoremap [fzf]gs :Gstatus<CR>
-nnoremap [fzf]gc :Gcommit -v -q<CR>
-nnoremap [fzf]gt :Gcommit -v -q %:p<CR>
-nnoremap [fzf]gd :Gdiff<CR>
-nnoremap [fzf]ge :Gedit<CR>
-nnoremap [fzf]gr :Gread<CR>
-nnoremap [fzf]gw :Gwrite<CR><CR>
-nnoremap [fzf]gl :silent! Glog<CR>:bot copen<CR>
-nnoremap [fzf]gp :Ggrep<Space>
-nnoremap [fzf]gm :Gmove<Space>
-nnoremap [fzf]gb :Git branch<Space>
-nnoremap [fzf]go :Git checkout<Space>
-nnoremap [fzf]gps :Dispatch! git push<CR>
-nnoremap [fzf]gpl :Dispatch! git pull<CR>
-nnoremap [fzf]s <C-W><C-W>
+nnoremap [space]e :Explore<CR>
+nnoremap [space]E :Vexplore<CR>
+noremap [space]s <C-W><C-W>
 
-nnoremap [fzf]kr :KickRun<cr>
-nnoremap [fzf]kd :KickDebug<cr>
-nnoremap [fzf]kb :KickBasic<cr>
+nnoremap [space]kr :KickRun<cr>
+nnoremap [space]kd :KickDebug<cr>
+nnoremap [space]kb :KickBasic<cr>
 
 
 
 " Bindings
 nno ; :
 " Switch to previous buffer
-nno <leader><leader> <c-^>
+nno <space><space> <c-^>
 " Jump anywhere
-nno <leader>j :call EasyMotion#S(1,1,2)<cr>
+nno [space]j :call EasyMotion#S(1,1,2)<cr>
 " Vertical split
-nno <leader>v <C-W>v
+nno [space]v <C-W>v
 " Horizontal split
-nno <leader>s <C-W>s
+nno [space]s <C-W>s
 " Cycle over panes
 nno <tab> <C-W><C-W>
 " Close current pane
-nno <leader>x <C-W>c
+nno [space]x <C-W>c
 " Close buffer
-nno <leader>X :bd<CR>
+nno [space]X :bd<CR>
 " Copy to Clipboard
-vno <leader>y :Pbyank<CR>
+vno [space]y :Pbyank<CR>
 " Pase from Clipboard
-nno <leader>p :Pbpaste<CR>
+nno [space]p :Pbpaste<CR>
 " Reset search
 nno <CR> :nohlsearch<CR><CR>
 " Reformat code
@@ -370,19 +356,18 @@ map <leader>tp :VimuxPromptCommand<cr>
 map <leader>t  :VimuxRunLastCommand<cr>
 
 " Edit self
-nno <leader>rc :Rc<cr>
+nno [space]rc :Rc<cr>
 " Reload self
-nno <leader>rl :Rl<cr>
+nno [space]rl :Rl<cr>
 
 " save shortuct
-nno <leader>w :w<cr>
+nno [space]w :w<cr>
 " quit
-nno <leader>q :q<cr>
+nno [space]q :q<cr>
 
 " Explorer
-nno <leader>n :VimFilerExplorer<cr>
 " Cheat sheet
-nno <leader>c :call CheatSheet()<cr>
+nno [space]c :call CheatSheet()<cr>
 " Move line left
 nno < <<
 nmap < <<
