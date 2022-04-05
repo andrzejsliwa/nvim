@@ -44,6 +44,8 @@ endif
 Plug 'noahfrederick/vim-hemisu'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'Lokaltog/vim-easymotion'
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'roman/golden-ratio'
@@ -204,14 +206,17 @@ endfunction
 " }}}
 
 function! KickRun()
+    execute 'w'
     call VimuxRunCommand('rake start PROGRAM=' . expand('%:t:r'))
 endfunction
 
 function! KickDebug()
+    execute 'w'
     call VimuxRunCommand('rake debug PROGRAM=' . expand('%:t:r'))
 endfunction
 
 function! KickBasic()
+    execute 'w'
     call VimuxRunCommand('rake start_basic PROGRAM=' . expand('%:t:r'))
 endfunction
 
