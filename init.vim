@@ -81,7 +81,7 @@ let g:airline_theme='powerlineish'
 " }}} Plugs definitions
 
 call plug#end()
-}}} Configure Plug Manager
+" }}} Configure Plug Manager
 
 " Renable syntax highlighting and file types detection {{{
 syntax enable
