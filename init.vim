@@ -300,7 +300,7 @@ augroup END
 
 " Handle mouse {{{
 "if has('mouse')
-"    set mouse=a
+set mouse=a
 "    if &term =~ "xterm" || &term =~ "screen"
 "        autocmd VimEnter *    set ttymouse=xterm2
 "        autocmd FocusGained * set ttymouse=xterm2
@@ -339,6 +339,7 @@ nnoremap [space]kr :KickRun<cr>
 nnoremap [space]kd :KickDebug<cr>
 nnoremap [space]kb :KickBasic<cr>
 
+" standar gt & gT
 nno [space]tn :tabnew<cr>
 nno [space]tt :tabnext
 nno [space]tm :tabmove
