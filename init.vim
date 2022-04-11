@@ -56,6 +56,17 @@ Plug 'benmills/vimux'
 Plug 'wikitopian/hardmode'
 Plug 'troydm/pb.vim'
 Plug 'croaker/mustang-vim'
+Plug 'kassio/neoterm'
+let g:neoterm_callbacks = {}
+let g:neoterm_autoscroll = 1
+function! g:neoterm_callbacks.before_new()
+    if winwidth('.') > 100
+        let g:neoterm_default_mod = 'botright vertical'
+    else
+        let g:neoterm_default_mod = 'botright'
+    end
+endfunction
+
 Plug 'Shougo/neosnippet' " NeoSnippet {{{
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)"
@@ -221,19 +232,30 @@ function! IndentErlangWithEmacs()
 endfunction
 " }}}
 
+function! RunCommand(command)
+    if exists('$TMUX')
+        call VimuxRunCommand(a:command)
+    else
+        execute ':T ' . a:command
+    end
+endfunction
+
 function! KickRun()
     execute 'w'
-    call VimuxRunCommand('rake start PROGRAM=' . expand('%:t:r'))
+    let c='rake start PROGRAM=' . expand('%:t:r')
+    call RunCommand(c)
 endfunction
 
 function! KickDebug()
     execute 'w'
-    call VimuxRunCommand('rake debug PROGRAM=' . expand('%:t:r'))
+    let c='rake debug PROGRAM=' . expand('%:t:r')
+    call RunCommand(c)
 endfunction
 
 function! KickBasic()
     execute 'w'
-    call VimuxRunCommand('rake start_basic PROGRAM=' . expand('%:t:r'))
+    let c='rake start_basic PROGRAM=' . expand('%:t:r')
+    call RunCommand(c)
 endfunction
 
 
